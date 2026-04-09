@@ -21,4 +21,15 @@ code {
 
 }
 
-  
+  .box-p{
+    
+    background-color: aliceblue;
+    color: rgb(116, 108, 108);
+    border-radius: 9px;
+    padding: 20px;
+    text-align: center;
+    width: 460px;
+    height: 60px;
+    font-size: 15px;
+    margin-bottom: 38px;
+  }
