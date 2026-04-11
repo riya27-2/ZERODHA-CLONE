@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-// import { holdings } from "../data/data";
 
-const Holdings = () => {
-  const [allHoldings, setAllHoldings] = useState([]);
+const Holdings=() => {
+    const [allHoldings,setallHoldings]= useState([]);
 
-  useEffect(() => {
-    axios.get('http://localhost:8080/allHoldings')
-      .then(res => {
-        // console.log('Fetched holdings:', res.data);
-        setAllHoldings(res.data);
-      })
-      .catch(err => {
-        console.error('Error fetching holdings:', err);
-        setAllHoldings([]);
-      })
-  }, []);
+useEffect(()=>{
+  axios.get("http://localhost:3002/allholdings") .then((res)=>{
+    setallHoldings(res.data);
+  });
+},[]);
+
+
 
   return (
     <>

@@ -2,21 +2,17 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-// import { positions } from "../data/data";
 
 const Positions = () => {
-  const [allPositions, setAllPositions] = useState([]);
+  const[allPositions,setallPositions]=useState([]);
 
-  useEffect(() => {
-    axios.get('http://localhost:8080/allPositions')
-      .then(res => {
-        setAllPositions(res.data);
-      })
-      .catch(err => {
-        console.error('Error fetching positions:', err);
-        setAllPositions([]);
-      })
-  }, []);
+  useEffect(()=>{
+    axios.get("http://localhost:3002/allPositions")
+    .then((res)=>{
+      setallPositions(res.data);
+    })
+  },[]);
+
 
   return (
     <>
