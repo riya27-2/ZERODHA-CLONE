@@ -7,7 +7,7 @@ const Orders = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/allOrders")
+    axios.get("http://localhost:3002/allOrder")
       .then(res => {
         setOrders(res.data);
         setLoading(false);
