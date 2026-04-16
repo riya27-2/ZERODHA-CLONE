@@ -40,10 +40,14 @@ const Login = () => {
       console.log(data);
       const { success, message } = data;
       if (success) {
-        handleSuccess(message);
-        setTimeout(() => {
-          navigate("/");
-        }, 1000);
+  handleSuccess(message);
+
+  localStorage.setItem("isLoggedIn", "false"); 
+
+  setTimeout(() => {
+    window.location.href = "/"; 
+  }, 1000);
+
       } else {
         handleError(message);
       }
