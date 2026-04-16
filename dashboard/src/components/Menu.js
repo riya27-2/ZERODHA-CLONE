@@ -1,9 +1,13 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState,useEffect} from "react";
+import { Link,useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
+
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
@@ -12,7 +16,21 @@ const Menu = () => {
   const handleProfileClick = (index) => {
     setIsProfileOpen(!isProfileOpen);
   }
-
+  //check user login
+   useEffect(() => {
+    axios.get("http://localhost:3002/profile", {
+      withCredentials: true
+    })
+    .then(res => {
+      if (res.data.status) {
+        setIsLoggedIn(true);
+        setUser(res.data.user);
+      }
+    })
+    .catch(() => {
+      setIsLoggedIn(false);
+    });
+  }, []);
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
 
@@ -46,28 +64,46 @@ const Menu = () => {
               <p className={selectedMenu === 4 ? activeMenuClass : menuClass}>Funds</p>
             </Link>
           </li>
-          <li>
-            <Link to="/apps" onClick={() => handleMenuClick(5)} style={{ textDecoration: "none" }} >
-              <p className={selectedMenu === 5 ? activeMenuClass : menuClass}>Apps</p>
-            </Link>
-          </li>
+          
         </ul>
         <hr />
-        <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar">ZU</div>
-          <p className="username">USERID</p>
+       <div className="profile" onClick={handleProfileClick}>
+          <div className="avatar">
+            {user?.username?.charAt(0).toUpperCase() || "G"}
+          </div>
+          <p className="username">
+            {isLoggedIn ? user?.username : "Guest"}
+          </p>
         </div>
-        {isProfileOpen
-          // && (
-          //   <div className="profile-menu">
-          //     <ul>
-          //       <li><Link to="/profile" style={{ textDecoration: "none" }}>Profile</Link></li>
-          //       <li><Link to="/settings" style={{ textDecoration: "none" }}>Settings</Link></li>
-          //       <li><Link to="/logout" style={{ textDecoration: "none" }}>Logout</Link></li>
-          //     </ul>
-          //   </div>
-          // )
-        }
+        {isProfileOpen && (
+          <div className="profile-menu" >
+            <ul >
+              {isLoggedIn ? (
+                <>
+                  <li>
+                    <Link to="/profile" style={{textDecoration:"none"}} >Profile</Link>
+                  </li>
+                  <li>
+                    <Link to="/logout" style={{textDecoration:"none"}}>Logout</Link>
+              
+            
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li>
+                    <Link to="/signup" style={{textDecoration:"none"}}>Signup</Link>
+                  </li>
+                  <li>
+                    <Link to="/login" style={{textDecoration:"none"}}>Login</Link>
+                  </li>
+                  
+                </>
+              )
+            }
+            </ul>
+          </div>
+        )}
       </div>
     </div >
   );
