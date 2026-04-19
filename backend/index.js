@@ -56,8 +56,7 @@ app.listen(PORT,()=>{
 
 app.use(
   cors({
-    origin: ["http://localhost:3000",
-        "http://localhost:3001"
+    origin: ["https://zerodha-clone-dun-sigma.vercel.app/"
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
