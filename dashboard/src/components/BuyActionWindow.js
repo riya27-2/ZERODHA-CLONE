@@ -15,7 +15,7 @@ const BuyActionWindow = ({ uid, mode }) => {
 
     const handleActionClick = () => {
         console.log("Order payload:", { name: uid, qty: stockQuantity, price: stockPrice, mode: mode });
-        axios.post(" https://zerodha-clone-tzkt.onrender.com/newOrder", {
+        axios.post("http://localhost:3002/newOrder", {
             name: uid,
             qty: stockQuantity,
             price: stockPrice,

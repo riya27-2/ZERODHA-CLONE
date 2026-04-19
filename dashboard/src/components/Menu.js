@@ -1,5 +1,5 @@
 import React, { useState,useEffect} from "react";
-import { Link} from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Menu = () => {
@@ -18,7 +18,7 @@ const Menu = () => {
   }
   //check user login
    useEffect(() => {
-    axios.get(" https://zerodha-clone-tzkt.onrender.com/profile", {
+    axios.get("http://localhost:3002/profile", {
       withCredentials: true
     })
     .then(res => {
@@ -36,7 +36,7 @@ const Menu = () => {
 
   return (
     <div className="menu-container">
-      <img src="logo.png" style={{ width: "50px" }} alt="logopng" />
+      <img src="logo.png" style={{ width: "50px" }} />
       <div className="menus">
         <ul>
           <li>

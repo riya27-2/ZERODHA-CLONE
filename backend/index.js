@@ -17,6 +17,22 @@ const {OrdersModel}=require("./model/OrdersModel");
 const app=express();
 
 // app.use(cors());
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000",
+        "http://localhost:3001"
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+app.use(cookieParser());
+
+app.use(express.json());
+
+app.use("/", authRoute);
+
 app.use(bodyParser.json());
 
 app.get("/allholdings",async(req,res)=>{
@@ -54,16 +70,3 @@ app.listen(PORT,()=>{
 })
 
 
-app.use(
-  cors({
-    origin: ["https://zerodha-clone-dun-sigma.vercel.app/"
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  })
-);
-app.use(cookieParser());
-
-app.use(express.json());
-
-app.use("/", authRoute);

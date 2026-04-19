@@ -5,7 +5,7 @@ function Profile() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    axios.get(" https://zerodha-clone-tzkt.onrender.com/profile", {
+    axios.get("http://localhost:3002/profile", {
       withCredentials: true
     })
     .then(res => {

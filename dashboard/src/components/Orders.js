@@ -7,7 +7,7 @@ const Orders = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get(" https://zerodha-clone-tzkt.onrender.com/allOrder")
+    axios.get("http://localhost:3002/allOrder")
       .then(res => {
         setOrders(res.data);
         setLoading(false);

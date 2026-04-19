@@ -8,7 +8,7 @@ function Logout() {
   useEffect(() => {
     const logoutUser = async () => {
       try {
-        await axios.get(" https://zerodha-clone-tzkt.onrender.com/logout", {
+        await axios.get("http://localhost:3002/logout", {
           withCredentials: true
         });
 
@@ -20,7 +20,7 @@ function Logout() {
     };
 
     logoutUser();
-  }, [navigate]);
+  }, []);
 
   return <h2>Logging out...</h2>;
 }
