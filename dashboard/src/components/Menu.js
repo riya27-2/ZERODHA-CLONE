@@ -18,7 +18,7 @@ const Menu = () => {
   }
   //check user login
    useEffect(() => {
-    axios.get("http://localhost:3002/profile", {
+    axios.get(" https://zerodha-clone-tzkt.onrender.com/profile", {
       withCredentials: true
     })
     .then(res => {
