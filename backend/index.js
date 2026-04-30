@@ -20,7 +20,10 @@ const app=express();
 
 app.use(
   cors({
-    origin:[ "https://zerodha-clone-ty69.vercel.app/"],
+     origin: [
+      "https://zerodha-clone-ty69.vercel.app",
+      "https://zerodha-clone-ty69-p5bct5gsg-riyapatel7228-3807s-projects.vercel.app"
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
