@@ -8,7 +8,7 @@ function Logout() {
   useEffect(() => {
     const logoutUser = async () => {
       try {
-        await axios.get("http://localhost:3002/logout", {
+        await axios.get("https://zerodha-clone-2ldn.onrender.com/logout", {
           withCredentials: true
         });
 
