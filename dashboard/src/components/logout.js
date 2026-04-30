@@ -20,7 +20,7 @@ function Logout() {
     };
 
     logoutUser();
-  }, []);
+  }, [navigate]);
 
   return <h2>Logging out...</h2>;
 }
